@@ -1,4 +1,4 @@
-import ServerCompatUtil from '@redfin/server-compat-util';
+import * as ServerCompatUtil from '@redfin/server-compat-util';
 import Cookie from '@redfin/cookie';
 
 const REGEX_KNOWN_MOBILE_DEVICE = /Redfin|Android|AgentTools|bb\d+|Kindle|Silk|blackberry|iemobile|ip(hone|od|ad)|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|symbian|treo|up\.(browser|link)|windows (ce|phone)|xda|xiino/i;
