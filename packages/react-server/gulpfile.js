@@ -10,7 +10,10 @@ var gulp = require("gulp"),
 	istanbul = require('gulp-istanbul'),
 	gulpif = require("gulp-if"),
 	minimist = require("minimist"),
-	eslint = require('gulp-eslint');
+	david = require("gulp-david"),
+	util = require("gulp-util"),
+	del = require("del"),
+	eslint = require("gulp-eslint");
 
 var availableOptions = {
 	'boolean': [ 'verbose', 'skipSourcemaps' ],
@@ -108,17 +111,32 @@ gulp.task("eslint", [], function() {
 		"!**/*.json",
 	]);
 	return gulp.src(srcMinusTest)
-        // eslint() attaches the lint output to the eslint property
-        // of the file object so it can be used by other modules.
-        .pipe(eslint())
-        // eslint.format() outputs the lint results to the console.
-        // Alternatively use eslint.formatEach() (see Docs).
-        .pipe(eslint.format())
-        // To have the process exit with an error code (1) on
-        // lint error, return the stream and pipe to failOnError last.
-        .pipe(eslint.failAfterError());
+				// eslint() attaches the lint output to the eslint property
+				// of the file object so it can be used by other modules.
+				.pipe(eslint())
+				// eslint.format() outputs the lint results to the console.
+				// Alternatively use eslint.formatEach() (see Docs).
+				.pipe(eslint.format())
+				// To have the process exit with an error code (1) on
+				// lint error, return the stream and pipe to failOnError last.
+				.pipe(eslint.failAfterError());
 });
 
-// todo: where should tests go?
+gulp.task('checkDependencies', () => {
+	gulp.src('package.json')
+		.pipe(david())
+		.on('error', err => util.log(err));
+});
 
-// todo: add clean
+gulp.task('upgradeDependencies', () => {
+	gulp.src('package.json')
+		.pipe(david({ update: true }))
+		.on('error', err => util.log(err))
+		.pipe(gulp.dest('.'));
+});
+
+gulp.task('clean', () => {
+	del(['target/']);
+})
+
+// todo: where should tests go?
