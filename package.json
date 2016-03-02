@@ -1,6 +1,6 @@
 {
   "name": "@redfin/has",
-  "version": "0.0.0-cf60701e081c12cfb2854affc81474b4b89817e6",
+  "version": "0.0.0-c2b16637d7f0b195934374aeb0b6b4892c65ddec",
   "description": "Redfin's Feature Detection Utilities",
   "author": "Kevin Jonson <kevin@redfin.com>",
   "license": "Unlicensed",
@@ -12,9 +12,9 @@
     "registry": "http://qa-compile-1.redfintest.com:4873"
   },
   "devDependencies": {
-    "@redfin/babel-plugin-rewrite-stingray-imports": "0.0.0-767d3e819bfd1b9d6aee4251b01414d96bfe6386",
-    "@redfin/babel-plugin-remove-stylesheet-imports": "0.0.0-ef6e3fc53916908a8b7b7ff387d34beca3c8a9f3",
-    "@redfin/cookie": "0.0.0-18de5ef99ea2b30c3dac7f6c09adbe6381ae125f",
+    "@redfin/babel-plugin-rewrite-stingray-imports": "0.0.0-2b71a34e0e721a44d0ba868c90325a47c76fe0b3",
+    "@redfin/babel-plugin-remove-stylesheet-imports": "0.0.0-53f081d2809e49463a7412d9836482ed1408d40f",
+    "@redfin/cookie": "0.0.0-a17018a95b567db415c0a1abb3cbe92ddc70da26",
     "@redfin/server-compat-util": "0.0.0-b301b366e06034a95a4ed4307c3ac46d6ef1ae18",
     "babel": "6.3.13",
     "babel-core": "6.3.13",
@@ -26,8 +26,9 @@
     "babel-preset-react": "6.3.13",
     "babel-register": "6.3.13",
     "del": "2.2.0",
-    "eslint": "0.24.1",
-    "eslint-plugin-react": "3.12.0",
+    "eslint": "2.3.0",
+    "eslint-plugin-import": "1.0.3",
+    "eslint-plugin-react": "4.2.0",
     "gulp": "3.9.0",
     "gulp-babel": "6.1.1",
     "gulp-eslint": "0.15.0",
