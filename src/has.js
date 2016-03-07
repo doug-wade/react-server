@@ -66,6 +66,8 @@ const TESTS = {
 	'webgl': () => _supportsWebGl(),
 	'ios-app': () => _hasIOSApp(),
 	'history': () => _hasHistory(),
+	'localStorage': () => _hasStorage('local'),
+	'sessionStorage': () => _hasStorage('session'),
 };
 
 
@@ -482,6 +484,42 @@ function _hasIOSApp() {
 
 function _hasHistory() {
 	return !!(window.history && window.history.pushState);
+}
+
+/**
+ * Determines the following:
+ * 1. Whether the browser supports `window.localStorage` or `window.sessionStorage`.
+ * 2. Whether the browser has enabled `window.localStorage` or `window.sessionStorage`.
+ *
+ * Source: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#Testing_for_support_vs_availability
+ *
+ * @param {'local'|'session'} type The type of browser storage. (Either: 'local' or 'session')
+ * @returns {boolean} Returns true if the current browser supports and has enabled the type of storage specified.
+ * @private
+ */
+function _hasStorage(type) {
+	var storageType = type && (type.toLowerCase() + 'Storage');
+
+	if (['localStorage', 'sessionStorage'].indexOf(storageType) >= 0 && _inBrowser()) {
+		// Browsers that support localStorage will have a property on the window object named localStorage. However, for
+		// various reasons, just asserting that property exists may throw exceptions. If it does exist, that is still no
+		// guarantee that localStorage is actually available, as various browsers offer settings that disable
+		// localStorage. So a browser may support localStorage, but not make it available to the scripts on the page.
+		// One example of that is Safari, which in Private Browsing mode gives us an empty localStorage object with a
+		// quota of zero, effectively making it unusable. Our feature detect should take these scenarios into account.
+		try {
+			var storage = window[storageType],
+				x = '__storage_test__';
+			storage.setItem(x, x);
+			storage.removeItem(x);
+			return true;
+		}
+		catch (e) {
+			return false;
+		}
+	} else {
+		return false;
+	}
 }
 
 
