@@ -12,8 +12,8 @@
     "registry": "http://qa-compile-1.redfintest.com:4873"
   },
   "dependencies": {
-    "@redfin/cookie": "0.0.0-a17018a95b567db415c0a1abb3cbe92ddc70da26",
-    "@redfin/server-compat-util": "0.0.0-b301b366e06034a95a4ed4307c3ac46d6ef1ae18"
+    "@redfin/cookie": "0.0.0-1bfcfba37c549556fd715859ae7a2743d0a4495c",
+    "@redfin/server-compat-util": "0.0.0-cf3ae052d88c2b19dec9f9c944ce76daa8bd58e4"
   },
   "devDependencies": {
     "@redfin/babel-plugin-remove-stylesheet-imports": "0.0.0-5763dc2f7b797f5ecc8fb5bc6888275ec138711d",
