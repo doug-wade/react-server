@@ -1,6 +1,6 @@
 {
   "name": "@redfin/has",
-  "version": "0.0.0-85449d1c049207667f4f20e94f7806783d07ceee",
+  "version": "0.0.0-39fab8237a3837192e317882e3df00de2d226303",
   "description": "Redfin's Feature Detection Utilities",
   "author": "Kevin Jonson <kevin@redfin.com>",
   "license": "Unlicensed",
