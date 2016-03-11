@@ -66,8 +66,8 @@ const TESTS = {
 	'webgl': () => _supportsWebGl(),
 	'ios-app': () => _hasIOSApp(),
 	'history': () => _hasHistory(),
-	'localStorage': () => _hasStorage('local'),
-	'sessionStorage': () => _hasStorage('session'),
+	'localstorage': () => _hasStorage('local'),
+	'sessionstorage': () => _hasStorage('session'),
 };
 
 
