@@ -9,24 +9,25 @@ const JS_FILES = ["./src/**/*.js"];
 
 gulp.task("default", ["build"])
 
-gulp.task("prepublish", ["clean", "build"]);
+gulp.task("prepublish", ["build"]);
 
-gulp.task("build", ["lint", "compile-js", "compile-stingray-js"])
+gulp.task("build", ["compile-js", "compile-stingray-js"])
 
-gulp.task("lint", function() {
-	return gulp.src(JS_FILES)
+gulp.task("lint", ["clean"], function(cb) {
+	gulp.src(JS_FILES)
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
+	cb();
 });
 
-gulp.task("compile-js", () => {
+gulp.task("compile-js", ["lint"], () => {
 	return gulp.src(JS_FILES)
 		.pipe(babel())
 		.pipe(gulp.dest("./"));
 });
 
-gulp.task("compile-stingray-js", () => {
+gulp.task("compile-stingray-js", ["lint"], () => {
 	return gulp.src(JS_FILES)
 		.pipe(babel({
 			plugins: [
@@ -54,9 +55,10 @@ gulp.task("compile-stingray-js", () => {
 		.pipe(gulp.dest("./stingray/"));
 });
 
-gulp.task("clean", () => {
-	return del([
+gulp.task("clean", (cb) => {
+	del([
 		"./has.js",
 		"./stingray",
-	])
+	]);
+	cb();
 });
