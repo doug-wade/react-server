@@ -1,6 +1,6 @@
 {
   "name": "@redfin/has",
-  "version": "0.0.0-8b72ce4b5065fa1bfa736cecde4afebfdf3d6c14",
+  "version": "0.0.0-74880969b62a1b6364fdb4a3a05a1cfdb93a02e1",
   "description": "Redfin's Feature Detection Utilities",
   "author": "Kevin Jonson <kevin@redfin.com>",
   "license": "Unlicensed",
@@ -12,8 +12,8 @@
     "registry": "http://qa-compile-1.redfintest.com:4873"
   },
   "dependencies": {
-    "@redfin/cookie": "0.0.0-3d4f6790c8eb40ee147c74d83ec750ee0492b9aa",
-    "@redfin/server-compat-util": "0.0.0-c400d40cbea583cb1ef2716ad42a105954647507"
+    "@redfin/cookie": "0.0.0-21897157bbec663f77393bca61ff2b9919a71c32",
+    "@redfin/server-compat-util": "0.0.0-d85f23b7aacc3571857c4956d40142dd2164c419"
   },
   "devDependencies": {
     "@redfin/babel-plugin-remove-stylesheet-imports": "0.0.0-5763dc2f7b797f5ecc8fb5bc6888275ec138711d",
