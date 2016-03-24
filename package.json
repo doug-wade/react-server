@@ -9,7 +9,7 @@
     "prepublish": "gulp prepublish"
   },
   "publishConfig": {
-    "registry": "http://qa-compile-1.redfintest.com:4873"
+    "registry": "http://npm.redfintest.com:4873"
   },
   "dependencies": {
     "@redfin/cookie": "0.0.0-b3d071730454b75092d0aeffc68ec8984c6795c2",
