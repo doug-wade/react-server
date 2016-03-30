@@ -342,10 +342,6 @@ class ClientController extends EventEmitter {
 		// Need this to be an integer value greater than zero.
 		var aboveTheFoldCount = Math.max(page.getAboveTheFoldCount()|0, 1)
 
-		// if we were previously rendered on the client, clean up the old divs and
-		// their ReactComponents.
-		this._cleanupPreviousRender(this.mountNode);
-
 		// These resolve with React elements when their data
 		// dependencies are fulfilled.
 		var elementPromises = PageUtil.standardizeElements(page.getElements());
@@ -391,31 +387,49 @@ class ClientController extends EventEmitter {
 
 			// During client transitions we create our root
 			// elements as we go.
-			if (!root && this._previouslyRendered){
-				if (element.containerOpen){
+			if (!root && this._previouslyRendered) {
+				var oldRootElement = document.querySelector(
+					`div[${REACT_SERVER_DATA_ATTRIBUTE}="${index}"]`
+				);
+				var oldRootContainer = document.querySelector(
+					`div[${PAGE_CONTAINER_NODE_ID}="${index}"]`
+				);
 
-					// If we're opening a container that's
-					// our new mountNode.
-					mountNode = this._createContainerNode(
-						mountNode,
-						element.containerOpen,
-						index
-					);
-				} else if (element.containerClose) {
-
-					// If we're closing a container its
-					// parent is once again our mountNode.
+				if (element.containerOpen && oldRootContainer) {
+					mountNode = oldRootContainer;
+				}	else if (element.containerClose && !oldRootContainer && !oldRootElement) {
 					mountNode = mountNode.parentNode;
+				} else if (oldRootElement) {
+					root = oldRootElement;
 				} else {
+					// this doesn't actually work; we'll need to fix it to only delete things
+					// with ids that are _greater_ than mine, in particular.
+					this._cleanupPreviousRender(index);
+					if (element.containerOpen){
 
-					// Need a new root element in our
-					// current mountNode.
-					root = this._createReactServerRootNode(mountNode, index)
+						// If we're opening a container that's
+						// our new mountNode.
+						mountNode = this._createContainerNode(
+							mountNode,
+							element.containerOpen,
+							index
+						);
+					} else if (element.containerClose) {
+
+						// If we're closing a container its
+						// parent is once again our mountNode.
+						mountNode = mountNode.parentNode;
+					} else {
+
+						// Need a new root element in our
+						// current mountNode.
+						root = this._createReactServerRootNode(mountNode, index)
+					}
 				}
-			}
 
-			if (element.containerOpen || element.containerClose){
-				return; // Nothing left to do.
+				if (element.containerOpen || element.containerClose){
+					return; // Nothing left to do.
+				}
 			}
 
 			var name  = PageUtil.getElementDisplayName(element)
@@ -487,21 +501,22 @@ class ClientController extends EventEmitter {
 	 * Cleans up a previous React render in the document. Unmounts all the components and destoys the mounting
 	 * DOM node(s) that were created.
 	 */
-	_cleanupPreviousRender(mountNode) {
+	_cleanupPreviousRender(index) {
 		if (this._previouslyRendered) {
 			logger.debug("Removing previous page's React components");
 
 			[].slice.call(
-				mountNode.querySelectorAll(`div[${REACT_SERVER_DATA_ATTRIBUTE}]`)
-			).forEach(root => {
-
-				// Since this node has a "data-react-server-root-id"
-				// attribute, we can assume that we created it
-				// and should destroy it. Destruction means
-				// first unmounting from React and then
-				// destroying the DOM node.
-				React.unmountComponentAtNode(root);
-				root.parentNode.removeChild(root);
+				document.querySelectorAll(`div[${REACT_SERVER_DATA_ATTRIBUTE}]`)
+			).forEach((root, i) => {
+				if (i >= index) {
+					// Since this node has a "data-react-server-root-id"
+					// attribute, we can assume that we created it
+					// and should destroy it. Destruction means
+					// first unmounting from React and then
+					// destroying the DOM node.
+					React.unmountComponentAtNode(root);
+					root.parentNode.removeChild(root);
+				}
 			});
 
 			[].slice.call(
