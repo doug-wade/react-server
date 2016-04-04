@@ -64,7 +64,6 @@ const TESTS = {
 	'android-web-view': () => _isAndroidWebView(),
 	'activex-object': () => _supportsActiveXObject(),
 	'webgl': () => _supportsWebGl(),
-	'ios-app': () => _hasIOSApp(),
 	'history': () => _hasHistory(),
 	'localstorage': () => _hasStorage('local'),
 	'sessionstorage': () => _hasStorage('session'),
@@ -464,22 +463,6 @@ function _supportsGeolocation() {
 	}
 
 	return result;
-}
-
-/**
- * Returns true if the iOS app has set a cookie signalling
- * that it is installed on this device.
- *
- * NOTE: This does not guarantee that the app is or isn't installed.
- *       The app can only set the cookie on iOS 9 and later,
- *       furthermore the cookie only gets refreshed once every
- *       two weeks so the app can be uninstalled before the
- *       cookie expires.
- *
- * @private
- */
-function _hasIOSApp() {
-	return Cookie('RF_HAS_IOS_APP') === 'true';
 }
 
 function _hasHistory() {
