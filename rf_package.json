@@ -36,8 +36,5 @@
     "gulp-babel": "6.1.1",
     "gulp-eslint": "0.15.0",
     "gulp-rename": "1.2.2"
-  },
-  "peerDependencies": {
-    "react-server": "0.1.4"
   }
 }
