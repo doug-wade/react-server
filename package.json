@@ -1,6 +1,6 @@
 {
   "name": "@redfin/has",
-  "version": "0.0.0-db07b1edf0785236ddf894b9d76384745d0eacca",
+  "version": "0.0.0-6b747946bee23731110afab7eacbbe0486d37454",
   "description": "Redfin's Feature Detection Utilities",
   "author": "Kevin Jonson <kevin@redfin.com>",
   "license": "UNLICENSED",
@@ -13,15 +13,15 @@
     "registry": "http://npm.redfintest.com:4873"
   },
   "dependencies": {
-    "@redfin/cookie": "0.0.0-abb3ad653fcca3c0ffa167e7265c00a2068cdd32",
-    "@redfin/server-compat-util": "0.0.0-adf15982adc7ee9e995d056278fce201ef8c34fe"
+    "@redfin/cookie": "0.0.0-04648a7f95b2682ae77f0b6e4257d42475545955",
+    "@redfin/server-compat-util": "0.0.0-090fd53c1bec984320fa473795e1897c338959fc"
   },
   "devDependencies": {
-    "@redfin/babel-plugin-remove-stylesheet-imports": "0.0.0-8f943a89f513129e527b5ffe9e74f5859ae206cc",
-    "@redfin/babel-plugin-rewrite-stingray-imports": "0.0.0-846a994d8b23cf4e5406a829c4ce56db8bfcfcb6",
+    "@redfin/babel-plugin-remove-stylesheet-imports": "0.0.0-a16d37d1b8a8ed9e3077c9c3e516aee58564d3c4",
+    "@redfin/babel-plugin-rewrite-stingray-imports": "0.0.0-2b6793458c6fd1e82af5d90b1978d4678fc7bea0",
     "babel": "6.3.13",
     "babel-core": "6.3.13",
-    "babel-eslint": "5.0.0",
+    "babel-eslint": "6.0.2",
     "babel-plugin-transform-es2015-modules-amd": "6.4.3",
     "babel-plugin-transform-es3-member-expression-literals": "6.5.0",
     "babel-plugin-transform-es3-property-literals": "6.5.0",
