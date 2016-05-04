@@ -56,7 +56,7 @@ gulp.task("compile-stingray-js", ["lint"], () => {
 });
 
 gulp.task("clean", (cb) => {
-	del([
+	del.sync([
 		"./has.js",
 		"./stingray",
 	]);
