@@ -9,9 +9,13 @@ export default class ReactServerAtomPluginView {
 
     // Create message element
     const message = document.createElement('div');
-    message.textContent = 'The ReactServerAtomPlugin package is Alive! It\'s ALIVE!';
+    message.textContent = `react-server-cli started in directory ${serializedState.cwd}`;
     message.classList.add('message');
     this.element.appendChild(message);
+    message.onclick = () => {
+      console.log('closing message');
+      message.parentNode.removeChild(message);
+    };
   }
 
   // Returns an object that can be retrieved when package is activated

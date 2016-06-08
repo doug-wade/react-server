@@ -2,6 +2,7 @@
 
 import ReactServerAtomPluginView from './react-server-atom-plugin-view';
 import { CompositeDisposable } from 'atom';
+import cli from 'react-server-cli';
 
 export default {
 
@@ -10,6 +11,9 @@ export default {
   subscriptions: null,
 
   activate(state) {
+    console.log('starting server...');
+    cli.start();
+    state.reactServerAtomPluginViewState.cwd = process.cwd();
     this.reactServerAtomPluginView = new ReactServerAtomPluginView(state.reactServerAtomPluginViewState);
     this.modalPanel = atom.workspace.addModalPanel({
       item: this.reactServerAtomPluginView.getElement(),
