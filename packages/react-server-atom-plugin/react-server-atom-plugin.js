@@ -12,6 +12,8 @@ export default {
 
   activate(state) {
     console.log('starting server...');
+    // TODO: once https://github.com/redfin/react-server/issues/241 is fixed,
+    // start only the page that is in the open buffer.
     cli.start();
     state.reactServerAtomPluginViewState.cwd = process.cwd();
     this.reactServerAtomPluginView = new ReactServerAtomPluginView(state.reactServerAtomPluginViewState);
