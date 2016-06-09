@@ -1,0 +1,40 @@
+{
+  "name": "@redfin/has",
+  "version": "",
+  "description": "Redfin's Feature Detection Utilities",
+  "author": "Kevin Jonson <kevin@redfin.com>",
+  "license": "UNLICENSED",
+  "repository": "git://stash.redfin.com/scm/red/main.git",
+  "main": "has.js",
+  "scripts": {
+    "prepublish": "gulp prepublish"
+  },
+  "publishConfig": {
+    "registry": "http://npm.redfintest.com:4873"
+  },
+  "dependencies": {
+    "@redfin/cookie": "",
+    "@redfin/server-compat-util": ""
+  },
+  "devDependencies": {
+    "@redfin/babel-plugin-remove-stylesheet-imports": "",
+    "@redfin/babel-plugin-rewrite-stingray-imports": "",
+    "babel": "6.3.13",
+    "babel-core": "6.3.13",
+    "babel-eslint": "6.0.2",
+    "babel-plugin-transform-es2015-modules-amd": "6.4.3",
+    "babel-plugin-transform-es3-member-expression-literals": "6.5.0",
+    "babel-plugin-transform-es3-property-literals": "6.5.0",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-react": "6.3.13",
+    "babel-register": "6.3.13",
+    "del": "2.2.0",
+    "eslint": "2.3.0",
+    "eslint-plugin-import": "1.0.3",
+    "eslint-plugin-react": "4.2.0",
+    "gulp": "3.9.0",
+    "gulp-babel": "6.1.1",
+    "gulp-eslint": "0.15.0",
+    "gulp-rename": "1.2.2"
+  }
+}
