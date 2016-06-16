@@ -38,6 +38,7 @@
     "react-server": "^0.3.2"
   },
   "devDependencies": {
+    "gulp-plumber": "^1.1.0",
     "nsp": "^2.4.0",
     "rimraf": "^2.5.2"
   }
