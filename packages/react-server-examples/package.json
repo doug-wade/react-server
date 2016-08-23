@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "test": "gulp test",
+    "prepublish": "echo 'all good'",
     "clean": "rimraf npm-debug.log*"
   },
   "devDependencies": {

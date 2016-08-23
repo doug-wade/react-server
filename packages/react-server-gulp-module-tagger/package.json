@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ava test/test.js && eslint index.js && nsp check",
+    "prepublish": "echo 'all good'",
     "clean": "rimraf target npm-debug.log*"
   },
   "repository": "redfin/react-server",

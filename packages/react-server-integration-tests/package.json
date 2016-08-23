@@ -4,6 +4,7 @@
   "description": "Integration tests for react-server",
   "scripts": {
     "test": "PORT=8771 gulp test",
+    "prepublish": "echo 'all good'",
     "clean": "rimraf target __clientTemp npm-debug.log*"
   },
   "devDependencies": {
