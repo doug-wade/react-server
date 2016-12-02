@@ -7,6 +7,9 @@ require.extensions['.css'] =
 require.extensions['.less'] =
 require.extensions['.scss'] =
 require.extensions['.sass'] =
+require.extensions['.png'] =
+require.extensions['.jpg'] =
+require.extensions['.jpeg'] =
 function(module, filename) {
 	return module._compile("", filename);
 };
