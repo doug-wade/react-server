@@ -219,6 +219,15 @@ function packageCodeForBrowser(entrypoints, outputDir, outputUrl, hot, minify, l
 			new webpack.optimize.CommonsChunkPlugin({
 				name:"common",
 			}),
+			new webpack.DefinePlugin({
+				'process.env': {
+					BROWSER: true,
+					// NODE_ENV is undefined outside of production for backwards-compatability;
+					// we may want to revisit this to decouple the environment from minify and
+					// set NODE_ENV consistently. 
+					NODE_ENV: minify ? '"production"' : undefined
+				},
+			}),
 		],
 	};
 
@@ -231,9 +240,6 @@ function packageCodeForBrowser(entrypoints, outputDir, outputUrl, hot, minify, l
 	if (minify) {
 		webpackConfig.plugins = [
 			...webpackConfig.plugins,
-			new webpack.DefinePlugin({
-				'process.env': {NODE_ENV: '"production"'},
-			}),
 			// TODO: should this be done as babel plugin?
 			new webpack.optimize.UglifyJsPlugin(),
 		];
