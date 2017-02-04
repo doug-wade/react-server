@@ -1,0 +1,16 @@
+environment:
+  nodejs_version: "4.4.7"
+
+init:
+  - npm install --global --production windows-build-tools
+  - npm config set python python2.7
+  - npm config set msvs_version 2015
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm run bootstrap
+
+test_script:
+  - npm test
+
+build: off
